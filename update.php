@@ -2,30 +2,25 @@
 $con = mysqli_connect("localhost", "root", "", "cruddb");
 if($con){
       echo "connectd!";
-}
 
-
+$id=$_GET['updateid'];
 if(isset($_POST['submit'])){
       $name = $_POST['name'];
       $email = $_POST['email'];
       $mobile = $_POST['mobile'];
       $password = $_POST['password'];
 
-      $sql= "INSERT INTO crud(NAME,EMAIL,MOBILE,PASSWORD) VALUES('$name','$email','$mobile','$password')";
+      $sql= "UPDATE crud set name='$name', email='$email', mobile='$mobile', password='$password' WHERE  id=$id ";
 
       $result= mysqli_query($con, $sql);
       if($result){
-            // echo "data inserted !";
+            echo "data updated !";
             header('location:display.php');
       }else{
             die(mysqli_error($con));
+      } 
+     }
       }
-}
-
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +46,8 @@ if(isset($_POST['submit'])){
       <input type="password" name="password" placeholder="password"><br><br>
 
 
-      <button type="submit" value="submit" name="submit">submit</button> 
+      
+      <button type="submit" value="submit" name="submit">update</button>
       </form>      
 </body>
 </html>

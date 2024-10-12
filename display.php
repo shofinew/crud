@@ -47,18 +47,19 @@ if($con){
            $password  = $row['PASSWORD'];
 
            echo '<tr>
-      <th>'.$id.'</th>
-      <th>'.$name.'</th>
-      <th>'.$email.'</th>
-      <th>'.$mobile.'</th>
-      <th>'.$password.'</th>
+      <td>'.$id.'</td>
+      <td>'.$name.'</td>
+      <td>'.$email.'</td>
+      <td>'.$mobile.'</td>
+      <td>'.$password.'</td>
+      
+      <td>
+            <button ><a href="update.php?updateid='.$id.'">Update</a></button>
+            <button><a href="delete.php? deleteid='.$id.'">Delete</a></button>
+      </td>
       </tr>';
-      
-      
-      
-      }
-      }
-      ?>
+      }}
+      ?>     
 </tbody>
 
       </table>
