@@ -1,9 +1,19 @@
 <?php
 $con = mysqli_connect("localhost", "root", "", "cruddb");
-if($con){
-      echo "connectd!";
-
+?>
+<?php
 $id=$_GET['updateid'];
+if($con){
+      $sql="SELECT * FROM crud WHERE id=$id";
+      $result=mysqli_query($con, $sql);
+      $row = mysqli_fetch_assoc($result);
+
+      $name= $row['NAME'];
+      $email= $row['EMAIL'];
+      $mobile= $row['MOBILE'];
+      $password= $row['PASSWORD'];
+
+
 if(isset($_POST['submit'])){
       $name = $_POST['name'];
       $email = $_POST['email'];
@@ -14,7 +24,7 @@ if(isset($_POST['submit'])){
 
       $result= mysqli_query($con, $sql);
       if($result){
-            echo "data updated !";
+            // echo "data updated !";
             header('location:display.php');
       }else{
             die(mysqli_error($con));
@@ -31,19 +41,19 @@ if(isset($_POST['submit'])){
       <title>form</title>
 </head>
 <body>
-      <form action="" method="POST" >
+      <form action="update.php" method="POST" >
 
       <label>NAME</label>
-      <input type="text" name="name" placeholder="name" ><br>
+      <input type="text" name="name" placeholder="name" value="<?php echo $name;?>" ><br>
 
       <label>EMAIL</label>
-      <input type="email" name="email" placeholder="email"><br>
+      <input type="email" name="email" placeholder="email"  value="<?php echo $email;?>"><br>
 
       <label>MOBILE</label>
-      <input type="text" name="mobile" placeholder="mobile"><br>
+      <input type="text" name="mobile" placeholder="mobile"  value="<?php echo $mobile;?>"><br>
 
       <label>PASSWORD</label>
-      <input type="password" name="password" placeholder="password"><br><br>
+      <input type="password" name="password" placeholder="password"  value="<?php echo $password;?>"><br><br>
 
 
       

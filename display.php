@@ -54,11 +54,12 @@ if($con){
       <td>'.$password.'</td>
       
       <td>
-            <button ><a href="update.php?updateid='.$id.'">Update</a></button>
+            <button ><a href="update.php? updateid='.$id.'">Update</a></button>
             <button><a href="delete.php? deleteid='.$id.'">Delete</a></button>
       </td>
       </tr>';
-      }}
+      }
+}
       ?>     
 </tbody>
 
