@@ -10,8 +10,10 @@ if(isset($_POST['submit'])){
       $email = $_POST['email'];
       $mobile = $_POST['mobile'];
       $password = $_POST['password'];
+      $date = $_POST['date'];
+      $time = $_POST['time'];
 
-      $sql= "INSERT INTO crud(NAME,EMAIL,MOBILE,PASSWORD) VALUES('$name','$email','$mobile','$password')";
+      $sql= "INSERT INTO crud(NAME,EMAIL,MOBILE,PASSWORD,DATE,TIME) VALUES('$name','$email','$mobile','$password','$date','$time')";
 
       $result= mysqli_query($con, $sql);
       if($result){
@@ -49,6 +51,12 @@ if(isset($_POST['submit'])){
 
       <label>PASSWORD</label>
       <input type="password" name="password" placeholder="password"><br><br>
+
+      <label>DATE</label>
+      <input type="date" name="date" ><br><br>
+
+      <label>TIME</label>
+      <input type="time" name="time" ><br><br>
 
 
       <button type="submit" value="submit" name="submit">submit</button> 

@@ -1,16 +1,21 @@
 <?php
 $con = mysqli_connect("localhost", "root", "", "cruddb");
-?>
-<?php
-$id=$_GET['updateid'];
+
+
+if(isset($_GET['updateid'])){
+      $id=$_GET['updateid'];
+
 if($con){
       $sql="SELECT * FROM crud WHERE id=$id";
       $result=mysqli_query($con, $sql);
       $row = mysqli_fetch_assoc($result);
 
+      $id= $row['ID'];
       $name= $row['NAME'];
       $email= $row['EMAIL'];
       $mobile= $row['MOBILE'];
+      $date= $row['DATE'];
+      $time= $row['TIME'];
       $password= $row['PASSWORD'];
 
 
@@ -18,9 +23,11 @@ if(isset($_POST['submit'])){
       $name = $_POST['name'];
       $email = $_POST['email'];
       $mobile = $_POST['mobile'];
+      $date = $_POST['date'];
+      $time = $_POST['time'];
       $password = $_POST['password'];
 
-      $sql= "UPDATE crud set name='$name', email='$email', mobile='$mobile', password='$password' WHERE  id=$id ";
+      $sql= "UPDATE crud set name='$name', email='$email', mobile='$mobile',date='$date',time='$time' , password='$password' WHERE  id=$id ";
 
       $result= mysqli_query($con, $sql);
       if($result){
@@ -31,6 +38,7 @@ if(isset($_POST['submit'])){
       } 
      }
       }
+}
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +62,12 @@ if(isset($_POST['submit'])){
 
       <label>PASSWORD</label>
       <input type="password" name="password" placeholder="password"  value="<?php echo $password;?>"><br><br>
+
+      <label>DATE</label>
+      <input type="date" name="date"   value="<?php echo $date;?>"><br><br>
+      
+      <label>TIME</label>
+      <input type="time" name="time"  value="<?php echo $time;?>"><br><br>
 
 
       

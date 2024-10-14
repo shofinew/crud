@@ -1,8 +1,5 @@
 <?php
 $con = mysqli_connect("localhost", "root", "", "cruddb");
-if($con){
-      echo "connectd!";
-}
 ?>
 
 
@@ -28,6 +25,8 @@ if($con){
                         <th>Email</th>
                         <th>Mobile</th>
                         <th>Password</th>
+                        <th>Date</th>
+                        <th>Time</th>
                         <th>Operation</th>
                   </tr>
             </thead>
@@ -44,6 +43,8 @@ if($con){
            $name  = $row['NAME'];
            $email  = $row['EMAIL'];
            $mobile  = $row['MOBILE'];
+           $date  = $row['DATE'];
+           $time  = $row['TIME'];
            $password  = $row['PASSWORD'];
 
            echo '<tr>
@@ -52,6 +53,8 @@ if($con){
       <td>'.$email.'</td>
       <td>'.$mobile.'</td>
       <td>'.$password.'</td>
+      <td>'.$date.'</td>
+      <td>'.$time.'</td>
       
       <td>
             <button ><a href="update.php? updateid='.$id.'">Update</a></button>
